@@ -158,7 +158,14 @@ class Player:
         pass
 
     def move(self):
-        pass # TODO: player rolls dice, moves that many spaces
+        def roll_dice(times: int):
+            times_runned = 0
+            while times_runned < times:
+              result = random.randint(1,6) + random.randint(1,6)
+              print(result)
+              times_runned += 1
+              self.roll_dice(2)
+              print("move ", self.roll_dice ,"spaces.")
 
     def is_bankrupt(self):
         pass
