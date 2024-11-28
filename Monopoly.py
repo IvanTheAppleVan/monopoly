@@ -170,7 +170,35 @@ class Game:
 
     def add_player(self):
         pass # TODO: add a player with name, game piece, starting money, etc
+    def token(self):
+        def array_loop(self):
+            while True:
+                array_loop == False
+        token_array = [
+            "rex",
+            "boat",
+            "dog",
+            "thimble",
+            "shoe",
+            "car"
+            ]
 
+
+        print("tokens:" )
+        for i in token_array:
+            print(i, end = ' ')
+
+        token_select = input("\nwhat token do you want to use:")
+
+        if token_select in token_array:
+            print (username," chosen", token_select)
+        else:
+            ("input a correct token")
+            array_loop == True
+            if array_loop == True:
+                continue
+
+    
     def setup(self):
         num_players = int(input("How many players? ")) # TODO: add error handling for bad inputs
         for i in range(num_players):
