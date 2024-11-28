@@ -170,6 +170,39 @@ class Game:
 
     def add_player(self):
         pass # TODO: add a player with name, game piece, starting money, etc
+
+print("Hello, Welcome to Monopoly. How many people are playing the game? The limit is 4.")
+PlayerAmount = int(input())
+
+if PlayerAmount == 2:
+    print("Select if you want to be player 1 or player 2")
+
+if PlayerAmount == 3:
+    print("Select if you want to be player 1,2 or 3")
+    
+if PlayerAmount == 4:
+    print("Select if you want to be player 1,2,3 or 4")
+    
+if PlayerAmount >4:
+    print("There can only be 4 players")
+    exit()
+    
+Ans = int(input())
+if Ans == 1:
+    print("Welcome player 1! Select your username")
+    
+if Ans == 2:
+    print("Welcome player 2! Select your username")
+    
+if Ans == 3:
+    print("Welcome player 3! Select your username")
+    
+if Ans == 4:
+    print("Welcome player 4! Select your username")
+
+Username = input()
+print("Hello", Username,"!")
+
     def token(self):
         def array_loop(self):
             while True:
