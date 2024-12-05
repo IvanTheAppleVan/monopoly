@@ -175,41 +175,25 @@ class Game:
         self.board = Board()
         self.players = []
 
+    def player(self):
+        pass # TODO: add a player with name, game piece, starting money, etc
     def player_name(self):
         print("Hello, Welcome to Monopoly. How many people are playing the game? The limit is 4.")
-        PlayerAmount = int(input())
         
-        if playeramount == 1:
-            print ("wrong input")
-            break
-        if PlayerAmount == 2:
-            print("Select if you want to be player 1 or player 2")
-        
-        if PlayerAmount == 3:
-            print("Select if you want to be player 1,2 or 3")
-            
-        if PlayerAmount == 4:
-            print("Select if you want to be player 1,2,3 or 4")
-            
-        if PlayerAmount >4:
-            print("There can only be 4 players")
-            exit()
-            
-        Ans = int(input())
-        if Ans == 1:
-            print("Welcome player 1! Select your username")
-            
-        if Ans == 2:
-            print("Welcome player 2! Select your username")
-            
-        if Ans == 3:
-            print("Welcome player 3! Select your username")
-            
-        if Ans == 4:
-            print("Welcome player 4! Select your username")
-        
-        Username = input()
-        print("Hello", Username,"!")
+        players_dict = {}#will contain the names of the players when inputed
+
+        numPlayers = int(input("\nhow many players are in the game?: "))
+        if numPlayers < 1 or numPlayers > 4:
+            print("the limit is 4 players and must be at least one, enter a valid number:")
+            return
+        # Create a new game instance and call the player_name method
+if __name__ == "__main__":
+    game_instance = Game()
+    game_instance.player_name()
+        for i in range(0,numPlayers):
+            name = input("Enter player name: ")
+            players_dict['player {}'.format(i)] = name.upper()
+
 
     def token(self):
     def array_loop(self):
