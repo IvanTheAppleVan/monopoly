@@ -141,7 +141,7 @@ class Player:
     def __init__(self, name, game_piece):
         self.name = name
         self.gamer_piece = game_piece
-        self.money = 0
+        self.money = 1500
         self.properties = []
         self.current_space = None
 
@@ -172,7 +172,6 @@ class Player:
 
 class Game:
     def __init__(self):
-        self.board = Board()
         self.players = []
 
     def player(self):
@@ -186,41 +185,24 @@ class Game:
         if numPlayers < 1 or numPlayers > 4:
             print("the limit is 4 players and must be at least one, enter a valid number:")
             return
-        # Create a new game instance and call the player_name method
-if __name__ == "__main__":
-    game_instance = Game()
-    game_instance.player_name()
+        
         for i in range(0,numPlayers):
             name = input("Enter player name: ")
             players_dict['player {}'.format(i)] = name.upper()
-
-
     def token(self):
-    def array_loop(self):
-        while True:
-            array_loop == False
-            token_array = [
-                "rex",
-                "boat",
-                "dog",
-                "thimble",
-                "shoe",
-                "car"
-                ]
-
-
-            print("tokens:" )
-            for i in token_array:
-                print(i, end = ' ')
-            token_select = input("\nwhat token do you want to use:")
-    
-            if token_select in token_array:
-                print (username," chosen", token_select)
-            else:
-                ("input a correct token")
-                array_loop == True
-                if array_loop == True:
-                    continue
+                token_array = [
+                    "rex",
+                    "boat",
+                    "dog",
+                    "thimble",
+                    "shoe",
+                    "car"
+                    ]
+                token i
+# Create a new game instance and call the player_name method
+if __name__ == "__main__":
+    game_instance = Game()
+    game_instance.player_name()
 
     
     def setup(self):
