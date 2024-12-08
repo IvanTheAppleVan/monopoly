@@ -173,24 +173,7 @@ class Player:
 class Game:
     def __init__(self):
         self.players = []
-
-    def player(self):
-        pass # TODO: add a player with name, game piece, starting money, etc
-    def player_name(self):
-        print("Hello, Welcome to Monopoly. How many people are playing the game? The limit is 4.")
-        
-        players_dict = {}#will contain the names of the players when inputed
-
-        numPlayers = int(input("\nhow many players are in the game?: "))
-        if numPlayers < 1 or numPlayers > 4:
-            print("the limit is 4 players and must be at least one, enter a valid number:")
-            return
-        
-        for i in range(0,numPlayers):
-            name = input("Enter player name: ")
-            players_dict['player {}'.format(i)] = name.upper()
-    def token(self):
-                token_array = [
+        self.token_array = [
                     "rex",
                     "boat",
                     "dog",
@@ -198,8 +181,32 @@ class Game:
                     "shoe",
                     "car"
                     ]
-                token i
-# Create a new game instance and call the player_name method
+    def player(self):
+        pass # TODO: add a player with name, game piece, starting money, etc
+    def player_name(self):
+        print("Hello, Welcome to Monopoly. How many people are playing the game? The limit is 4.")
+        
+        players_dict = {}#will contain the names of the players when inputed
+
+        num_Players = int(input("\nhow many players are in the game?: "))
+        if num_Players < 1 or num_Players > 4:
+            print("the limit is 4 players and must be at least one")
+            return
+        
+        for i in range(0,num_Players): # can enter as many names as there are players inputed in the numplayers variable
+            name = input("Enter player name: ")
+            players_dict['player {}'.format(i)] = name.upper()
+
+            print(f"tokens: ', '{(self.token_array)}")# curley brackets othersie you cant format the text
+            token = input(f"{name}, enter token you want to use: ")
+            
+            self.token_array.remove(token)#removes token from list becuase there used to show who is who on the board making it confusing if there was more than one of a token
+            players_dict[name] = token
+            
+            players = (f"{name}: {token}") #if not formatted would just output the words name and token
+            print (players)
+            #i have proof in a word document that i made this my self becuase i learned all the ideas put into it.
+# Create a new game instance, makes name thing happen idk
 if __name__ == "__main__":
     game_instance = Game()
     game_instance.player_name()
