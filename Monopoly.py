@@ -1,3 +1,11 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Dec 17 10:23:36 2024
+
+@author: 188123
+"""
+
+import random
 class Board:
     def __init__(self):
         self.spaces = []
@@ -42,7 +50,7 @@ class Board:
         self.spaces.append(Tax("Super Tax", 100))
         self.spaces.append(Property("Mayfair", 400, 50, "Dark Blue"))
 
-    def __str__(self): #TODO: make players appear on the board
+    def board (self): #TODO: make players appear on the board
         return """
         ╔═══╦═══╦═══╦═══╦═══╦═══╦═══╦═══╦═══╦═══╦═══╗
         ║F P║STR║CHA║FLT║TRF║FNS║LST║COV║W W║PIC║GTJ║
@@ -165,7 +173,7 @@ class Player:
               print(result)
               times_runned += 1
               self.roll_dice(2)
-              print("move ", self.roll_dice ,"spaces.")
+              print(f"move , {self.roll_dice} ,spaces.")
 
     def is_bankrupt(self):
         pass
@@ -181,8 +189,7 @@ class Game:
                     "shoe",
                     "car"
                     ]
-    def player(self):
-        pass # TODO: add a player with name, game piece, starting money, etc
+    
     def player_name(self):
         print("Hello, Welcome to Monopoly. How many people are playing the game? The limit is 4.")
         
@@ -205,39 +212,32 @@ class Game:
             
             players = (f"{name}: {token}") #if not formatted would just output the words name and token
             print (players)
-            #i have proof in a word document that i made this my self becuase i learned all the ideas put into it.
-# Create a new game instance, makes name thing happen idk
+            
 if __name__ == "__main__":
     game_instance = Game()
     game_instance.player_name()
-
-    
     def setup(self):
-        num_players = int(input("How many players? ")) # TODO: add error handling for bad inputs
-        for i in range(num_players):
-            self.add_player()
-        
         current_player = self.players[0] # TODO: have players roll 1d6 to see who goes first
-
+    
         game_over = False
         while not game_over:
-            print(self.board)
-            print(f"{current_player.name}'s turn:")
-            input("press enter to roll")
-            current_player.move()
-            current_player.current_space.on_land(current_player)
-            # TODO: roll again on double, send to jail on triple-double
-
-            next_player = self.players[(self.players.index(current_player) + 1) % len(self.players)]
-            if current_player.is_bankrupt():
-                print(f"{current_player.name} is bankrupt!")
-                self.players.remove(current_player)
-                if len(self.players) == 1:
-                    game_over = True
-            current_player = next_player
-
+                print(self.board)
+                print(f"{current_player.name}'s turn:")
+                input("press enter to roll")
+                current_player.move()
+                current_player.current_space.on_land(current_player)
+                # TODO: roll again on double, send to jail on triple-double
+    
+                next_player = self.players[(self.players.index(current_player) + 1) % len(self.players)]
+                if current_player.is_bankrupt():
+                    print(f"{current_player.name} is bankrupt!")
+                    self.players.remove(current_player)
+                    if len(self.players) == 1:
+                        game_over = True
+                current_player = next_player
+    
         print(f"""
-        Game over!
-        {current_player.name} wins!
-        They had £{current_player.money}
-        """)
+            Game over!
+            {current_player.name} wins!
+            They had £{current_player.money}
+            """)
