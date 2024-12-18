@@ -51,7 +51,7 @@ class Board:
         self.spaces.append(Property("Mayfair", 400, 50, "Dark Blue"))
 
     def board (self): #TODO: make players appear on the board
-        return """
+        self.boardthatdoesthing = """
         ╔═══╦═══╦═══╦═══╦═══╦═══╦═══╦═══╦═══╦═══╦═══╗
         ║F P║STR║CHA║FLT║TRF║FNS║LST║COV║W W║PIC║GTJ║
         ╠═══╬═══╩═══╩═══╩═══╩═══╩═══╩═══╩═══╩═══╬═══╣
@@ -165,22 +165,18 @@ class Player:
     def go_to_jail(self):
         pass
 
-    def move(self):
-        def roll_dice(times: int):
-            times_runned = 0
-            while times_runned < times:
-              result = random.randint(1,6) + random.randint(1,6)
-              print(result)
-              times_runned += 1
-              self.roll_dice(2)
-              print(f"move , {self.roll_dice} ,spaces.")
+    
+    def roll_dice(self, times: int):
+            die1 = random.randint(1, 6)
+            die2 = random.randint(1, 6)
+            return die1 + die2
 
     def is_bankrupt(self):
         pass
 
 class Game:
     def __init__(self):
-        self.players = []
+        self.players_dict = {}
         self.token_array = [
                     "rex",
                     "boat",
@@ -193,35 +189,38 @@ class Game:
     def player_name(self):
         print("Hello, Welcome to Monopoly. How many people are playing the game? The limit is 4.")
         
-        players_dict = {}#will contain the names of the players when inputed
+        
 
         num_Players = int(input("\nhow many players are in the game?: "))
+        if not int(num_Players) :
+            print("enter a number from 1 to 4, not a word")
         if num_Players < 1 or num_Players > 4:
             print("the limit is 4 players and must be at least one")
             return
         
         for i in range(0,num_Players): # can enter as many names as there are players inputed in the numplayers variable
             name = input("Enter player name: ")
-            players_dict['player {}'.format(i)] = name.upper()
+            self.players_dict['player {}'.format(i)] = name.upper()
 
-            print(f"tokens: ', '{(self.token_array)}")# curley brackets othersie you cant format the text
+            print(f"tokens:{(self.token_array)}")# curley brackets othersie you cant format the text
             token = input(f"{name}, enter token you want to use: ")
+            if token in self.token_array:
+                self.token_array.remove(token)#removes token from list becuase there used to show who is who on the board making it confusing if there was more than one of a token
+                self.players_dict[name] = token
             
-            self.token_array.remove(token)#removes token from list becuase there used to show who is who on the board making it confusing if there was more than one of a token
-            players_dict[name] = token
-            
-            players = (f"{name}: {token}") #if not formatted would just output the words name and token
-            print (players)
+            self.players = (f"{name}: {token}") #if not formatted would just output the words name and token
+            print (self.players)
             
 if __name__ == "__main__":
     game_instance = Game()
     game_instance.player_name()
     def setup(self):
+        
         current_player = self.players[0] # TODO: have players roll 1d6 to see who goes first
-    
+        self.setup
         game_over = False
         while not game_over:
-                print(self.board)
+                print(self.boardthatdoesthing)
                 print(f"{current_player.name}'s turn:")
                 input("press enter to roll")
                 current_player.move()
@@ -240,4 +239,8 @@ if __name__ == "__main__":
             Game over!
             {current_player.name} wins!
             They had £{current_player.money}
-            """)
+            """)#
+            
+game_instance = Game()
+game_instance.start_game()
+        
